@@ -23,25 +23,24 @@ class MusicLibraryController
     puts  "To play a song, enter 'play song'."
     puts  "To quit, type 'exit'."
     puts  "What would you like to do?"
+
     input = ""
+
     until input == "exit" do
       input = gets.strip
-      if input == "list songs"
+
+      case input
+      when "list songs"
         list_songs
-      end
-      if input == "list artists"
+      when "list artists"
         list_artists
-      end
-      if input == "list genres"
+      when "list genres"
         list_genres
-      end
-      if input == "list artist"
+      when "list artist"
         list_songs_by_artist
-      end
-      if input == "list genre"
+      when "list genre"
         list_songs_by_genre
-      end
-      if input == "play song"
+      when "play song"
         play_song
       end
     end
@@ -49,17 +48,17 @@ class MusicLibraryController
 #____________________________________________________
 
   def list_songs
-     Song.all.uniq{|artist| artist.name}.sort_by{|song| song.name}.each.with_index(1) {|song, index| puts "#{index}. #{song.artist.name} - #{song.name} - #{song.genre.name}"}
+     Song.all.sort_by{|song| song.name}.each.with_index(1) {|song, index| puts "#{index}. #{song.artist.name} - #{song.name} - #{song.genre.name}"}
   end
 #____________________________________________________
 
   def list_artists
-    Artist.all.uniq{|artist| artist.name}.sort_by{|artist| artist.name}.each.with_index(1) {|artist, index| puts "#{index}. #{artist.name}"}
+    Artist.all.sort_by{|artist| artist.name}.each.with_index(1) {|artist, index| puts "#{index}. #{artist.name}"}
   end
 #____________________________________________________
 
   def list_genres
-    Genre.all.uniq{|genre| genre.name}.sort_by{|genre| genre.name}.each.with_index(1) {|genre, index| puts "#{index}. #{genre.name}"}
+    Genre.all.sort_by{|genre| genre.name}.each.with_index(1) {|genre, index| puts "#{index}. #{genre.name}"}
   end
 #____________________________________________________
 

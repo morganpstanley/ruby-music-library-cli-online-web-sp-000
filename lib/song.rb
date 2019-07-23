@@ -21,11 +21,6 @@ class Song
   end
 #____________________________________________________
 
-  # def genre=(genre)
-  #   @genre = genre
-  #   binding.pry
-  # end
-
   def genre=(genre)
     if genre.is_a?(String)
       genre = Genre.find_or_create_by_name(genre)
@@ -37,10 +32,6 @@ class Song
 
 
 #____________________________________________________
-
-#artist=
-# => assigns an artist to the song (song belongs to artist)
-# => invokes Artist#add_song to add itself to the artist's collection of songs (artist has many songs)
 
 def artist=(artist)
   if artist.is_a?(String)
