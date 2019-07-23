@@ -38,8 +38,7 @@ class MusicLibraryController
         list_genres
       when "list artist"
         list_songs_by_artist
-      end
-      if input == "list genre"
+      when "list genre"
         list_songs_by_genre
       end
       if input == "play song"
